@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  graphhopper:
+    image: israelhikingmap/graphhopper
+    command: ["--url", "https://download.geofabrik.de/europe/andorra-latest.osm.pbf", "--host", "0.0.0.0"]
+    ports:
+      - "8989"
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on:
+      - graphhopper
+    restart: always
