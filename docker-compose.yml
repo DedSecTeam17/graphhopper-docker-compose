@@ -5,7 +5,7 @@ services:
     image: israelhikingmap/graphhopper
     command: ["--url", "https://download.geofabrik.de/europe/andorra-latest.osm.pbf", "--host", "0.0.0.0"]
     ports:
-      - "8989"
+      - "8989:8989"
     restart: always
 
   nginx:
